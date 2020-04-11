@@ -8,9 +8,9 @@ int main()
 {
 	Matrix3x3 matrix = Matrix3x3();
 	matrix.fillRandomElements(-10,10);
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<matrix.size; i++)
 	{
-		for (int j = 0; j<3; j++)
+		for (int j = 0; j<matrix.size; j++)
 		{
 			cout << matrix.element(i,j)<<"\t";
 		}
@@ -23,8 +23,6 @@ int main()
 	cout << endl << "Row 1 sum equals\t\t\t" << matrix.sumRow(0);
 	cout << endl << "Column 1 minimum value is\t\t" << matrix.minColumn(0);
 	cout << endl << "Column 2 maximum value is\t\t" << matrix.maxColumn(1)<< endl;
-
 	system("pause");
 	return 0;
-
 }

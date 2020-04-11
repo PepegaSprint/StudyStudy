@@ -13,9 +13,9 @@ void Matrix3x3::setElement(const int i, const int j, const int value)
 
 Matrix3x3::Matrix3x3()
 {
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
-		for (int j = 0; j<3; j++)
+		for (int j = 0; j<size; j++)
 		{
 			setElement(i,j,0);
 		}
@@ -24,9 +24,9 @@ Matrix3x3::Matrix3x3()
 
 void Matrix3x3::fillRandomElements(const int minVal, const int maxVal)
 {
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
-		for (int j = 0; j< 3; j++)
+		for (int j = 0; j< size; j++)
 		{
 			setElement(i, j, (rand()%(maxVal-minVal+1)+minVal));
 		}
@@ -36,7 +36,7 @@ void Matrix3x3::fillRandomElements(const int minVal, const int maxVal)
 int Matrix3x3::sumPrincipalDiag() const
 {
 	int buf = 0;
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
 		buf = buf + element(i, i);
 	}
@@ -46,7 +46,7 @@ int Matrix3x3::sumPrincipalDiag() const
 int Matrix3x3::sumSecondaryDiag() const
 {
 	int buf = 0;
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
 		buf = buf + element(i, 2-i);
 	}
@@ -56,7 +56,7 @@ int Matrix3x3::sumSecondaryDiag() const
 int Matrix3x3::productPrincipalDiag() const
 {
 	int buf = 1;
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
 		buf = buf * element(i, i);
 	}
@@ -66,9 +66,9 @@ int Matrix3x3::productPrincipalDiag() const
 int Matrix3x3::productSecondaryDiag() const
 {
 	int buf = 1;
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
-		buf = buf * element(i, 2 - i);
+		buf = buf * element(i, size -1 - i);
 	}
 	return buf;
 }
@@ -76,7 +76,7 @@ int Matrix3x3::productSecondaryDiag() const
 int Matrix3x3::sumRow(const int iRow) const
 {
 	int buf = 0;
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
 		buf = buf + element(iRow, i);
 	}
@@ -86,7 +86,7 @@ int Matrix3x3::sumRow(const int iRow) const
 int Matrix3x3::minColumn(const int iCol) const
 {
 	int min = INT_MAX;
-	for (int i = 0;i<3; i++)
+	for (int i = 0;i<size; i++)
 	{
 		if (min > element(i, iCol))  min = element(i, iCol);
 	}
@@ -96,10 +96,9 @@ int Matrix3x3::minColumn(const int iCol) const
 int Matrix3x3::maxColumn(const int iCol) const
 {
 	int max = INT_MIN;
-	for (int i = 0; i<3; i++)
+	for (int i = 0; i<size; i++)
 	{
 		if (max < element(i, iCol))  max = element(i, iCol);
 	}
 	return max;
 }
-

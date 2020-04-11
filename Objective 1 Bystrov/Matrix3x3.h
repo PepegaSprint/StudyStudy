@@ -3,6 +3,7 @@ class Matrix3x3
 {
 public:
 	Matrix3x3();
+	int size = 3;
 
 	void setElement(const int i, const int j, const int value);
 	int element(const int i, const int j) const;
